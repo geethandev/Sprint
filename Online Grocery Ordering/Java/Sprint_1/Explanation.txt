@@ -1,0 +1,84 @@
+ManagementSystem.java;
+This class manages customer registration, updates, product management (placeholder methods), customer profile activation/deactivation, and various utility methods like email validation, contact number validation, etc.
+It uses an ArrayList to store Customer objects and provides functionalities based on user input.
+
+ShoppingCart.java:
+This class manages shopping cart operations including adding products, viewing the cart, removing products, updating quantities, clearing the cart, calculating total price, and checking out.
+It uses an ArrayList to store Product objects and provides menu-driven operations based on user input.
+
+Product.java:
+This class represents a Product with attributes such as name, price, and quantity.
+It provides getters, setters, and an overridden toString() method for displaying product details.
+
+How to Run:
+Compile all three .java files (ManagementSystem.java, ShoppingCart.java, and Product.java).
+Run the ManagementSystem class to manage customer and product operations.
+Run the ShoppingCart class separately to manage shopping cart operations
+
+Explain:
+Customer Registration and Management:
+
+File Name: Customer.java (for Customer class)
+Conditions:
+Register a customer with fields: Customer Name, Email, Password, Address, Contact Number.
+System-generated Customer ID.
+Registration acknowledgment message.
+Update Customer Details:
+
+File Name: ManagementSystem.java
+Conditions:
+Update Customer Name, Password, Address, Contact Number.
+Display acknowledgment message upon successful update.
+Add/Update Product Details:
+
+File Name: ManagementSystem.java
+Conditions:
+Add/Update Product ID, Product Name, Product Description, Available Quantities, Price.
+System-generated 10-digit Product ID in specified format.
+Display acknowledgment message upon successful addition/update.
+View Customer Details by Email:
+
+File Name: ManagementSystem.java
+Conditions:
+Input: Customer Email.
+Display customer details if found; otherwise, display an error message.
+Find Costliest Product:
+
+File Name: ManagementSystem.java
+Conditions:
+Return the product with the highest price from the list.
+If empty product list, display appropriate message.
+View Products Sorted by Quantity:
+
+File Name: ManagementSystem.java
+Conditions:
+Display products in ascending order based on their quantities.
+If empty product list, display appropriate message.
+Customer Inactivation (Soft Delete):
+
+File Name: ManagementSystem.java
+Conditions:
+Set customer status to 'Inactive' upon request.
+Display acknowledgment message upon successful inactivation.
+Customer Activation:
+
+File Name: ManagementSystem.java
+Conditions:
+Activate customer profile upon request.
+Display acknowledgment message upon successful activation.
+View Customer List by Email Domain:
+
+File Name: ManagementSystem.java
+Conditions:
+Input: Email Domain (e.g., gmail.com, yahoo.com).
+Display list of customers with email addresses matching the domain.
+Sort customers by Customer ID in ascending order.
+If no customers found, display appropriate message.
+Calculate Total Price of Selected Products:
+
+File Name: ShoppingCart.java
+Conditions:
+Select products by entering ProductID and Quantity.
+Validate selected quantities against available stock.
+Calculate and display total order amount.
+Provide options to cancel or confirm the order.

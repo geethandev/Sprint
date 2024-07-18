@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Basket</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 1em;
+        }
+        nav h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .cart-container {
+            margin: 50px auto;
+            width: 80%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-items {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .cart-items:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .item-details {
+            display: flex;
+            align-items: center;
+        }
+        .item-details img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .item-info {
+            margin-left: 20px;
+        }
+        .item-name {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .item-price {
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        .item-quantity {
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+        .summary {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .summary-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .total-amount {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .empty-cart {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1.2em;
+            color: #666;
+        }
+        .empty-cart a {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        #transaction-page {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #transaction-page h1 {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #payment-method {
+            margin-bottom: 20px;
+        }
+
+        #payment-method input {
+            margin-right: 10px;
+        }
+
+        #pricing-details {
+            margin-bottom: 20px;
+        }
+
+        #pricing-details h2 {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #pricing-details p, #pricing-details h3 {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+
+        #proceed-to-buy button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        #proceed-to-buy button:hover {
+            background-color: #45a049;
+        }
+
+        #invoice {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        #invoice h2 {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1><span style="color: #97BE5A;">Small</span>Basket</h1>
+        <ul>
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="#" id="cart-link">Cart</a></li>
+            <li><a href="./myprofile.html" id="profileLink">My Profile</a></li>
+            <li><a href="./login.html" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="cart-container">
+        <div class="cart-items" id="cartItemsContainer">
+        </div>
+        
+        <div class="summary">
+            <div class="summary-title">Summary</div>
+            <div id="summaryDetails">
+            </div>
+            <button id="checkoutBtn" class="buynow-btn" style="display: none;">Checkout</button>
+        </div>
+
+        <div id="emptyCartMessage" class="empty-cart" style="display: none;">
+            Your cart is empty. <a href="#">View Products</a>.
+        </div>
+
+        <section id="transaction-page">
+            <h1>Transaction Details</h1>
+
+            <section id="payment-method">
+                <h2>Choose Payment Method:</h2>
+                <input type="radio" id="cod" name="payment" value="COD">
+                <label for="cod">COD (Cash on Delivery)</label><br>
+                <input type="radio" id="upi" name="payment" value="UPI">
+                <label for="upi">UPI</label><br>
+                <input type="radio" id="credit-card" name="payment" value="Credit Card">
+                <label for="credit-card">Credit Card</label><br>
+                <input type="radio" id="debit-card" name="payment" value="Debit Card">
+                <label for="debit-card">Debit Card</label><br>
+                <input type="radio" id="net-banking" name="payment" value="Net Banking">
+                <label for="net-banking">Net Banking</label><br>
+            </section>
+
+            <section id="pricing-details">
+                <h2>Final Pricing Details:</h2>
+                <p>Total Product Price: <span id="total-product-price">$0.00</span></p>
+                <p>Total Discount: <span id="total-discount">-$0.00</span></p>
+                <p>Extra Charges: <span id="extra-charges">+$0.00</span></p>
+                <h3>Order Total: <span id="order-total">$0.00</span></h3>
+            </section>
+
+            <section id="proceed-to-buy">
+                <button onclick="completeTransaction()">Proceed to Buy</button>
+            </section>
+
+            <section id="invoice">
+            </section>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const summaryDetails = document.getElementById('summaryDetails');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const emptyCartMessage = document.getElementById('emptyCartMessage');
+            
+            let cartItems = [
+                { id: 1, name: 'Tomatoes', price: 15, quantity: 2, image: 'https://cdn.pixabay.com/photo/2011/03/16/16/01/tomatoes-5356_1280.jpg' },
+                { id: 2, name: 'Apples', price: 45, quantity: 1, image: 'https://cdn.pixabay.com/photo/2018/12/07/01/53/apple-3860991_1280.jpg' }
+            ];
+
+            function displayCartItems() {
+                cartItemsContainer.innerHTML = '';
+                cartItems.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-items');
+                    itemElement.innerHTML = `
+                        <div class="item-details">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div class="item-info">
+                                <div class="item-name">${item.name}</div>
+                                <div class="item-price">Price: ₹${item.price}</div>
+                                <div class="item-quantity">Quantity: ${item.quantity}</div>
+                                <button class="delete-btn" data-id="${item.id}">Delete</button>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+
+                if (cartItems.length > 0) {
+                    checkoutBtn.style.display = 'block';
+                    emptyCartMessage.style.display = 'none';
+                } else {
+                    checkoutBtn.style.display = 'none';
+                    emptyCartMessage.style.display = 'block';
+                }
+                calculateTotalAmount();
+            }
+
+            function calculateTotalAmount() {
+                let total = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+                summaryDetails.innerHTML = `
+                    <div class="total-amount">Total Amount: ₹${total}</div>
+                `;
+            }
+
+            cartItemsContainer.addEventListener('click', function(e) {
+                if (e.target.classList.contains('delete-btn')) {
+                    const itemId = parseInt(e.target.getAttribute('data-id'));
+                    cartItems = cartItems.filter(item => item.id !== itemId);
+                    displayCartItems();
+                }
+            });
+            displayCartItems();
+
+            function showTransactionPage() {
+                document.getElementById('transaction-page').style.display = 'block';
+                document.getElementById('cart-container').style.display = 'none';
+                updatePricingDetails();
+            }
+
+            function updatePricingDetails() {
+                const totalProductPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+                const totalDiscount = 0;
+                const extraCharges = 0; 
+                const orderTotal = totalProductPrice - totalDiscount + extraCharges;
+
+                document.getElementById('total-product-price').textContent = `₹${totalProductPrice.toFixed(2)}`;
+                document.getElementById('total-discount').textContent = `₹${totalDiscount.toFixed(2)}`;
+                document.getElementById('extra-charges').textContent = `₹${extraCharges.toFixed(2)}`;
+                document.getElementById('order-total').textContent = `₹${orderTotal.toFixed(2)}`;
+            }
+
+            checkoutBtn.addEventListener('click', function() {
+                showTransactionPage();
+            });
+
+            function completeTransaction() {
+                updatePricingDetails();
+                displayInvoice();
+            }
+
+            function displayInvoice() {
+                const invoiceSection = document.getElementById('invoice');
+                const invoiceData = {
+                    transactionId: '123456',
+                    customerId: '789',
+                    productIds: cartItems.map(item => item.id),
+                    totalAmount: cartItems.reduce((total, item) => total + (item.price * item.quantity), 0),
+                    numberOfItems: cartItems.length
+                };
+
+                let invoiceHTML = `
+                    <h2>Invoice Details:</h2>
+                    <p>Transaction ID: ${invoiceData.transactionId}</p>
+                    <p>Customer ID: ${invoiceData.customerId}</p>
+                    <p>All Product IDs: ${invoiceData.productIds.join(', ')}</p>
+                    <p>Total Amount: ₹${invoiceData.totalAmount.toFixed(2)}</p>
+                    <p>Number of Items: ${invoiceData.numberOfItems}</p>
+                `;
+
+                invoiceSection.innerHTML = invoiceHTML;
+            }
+        });
+    </script>
+</body>
+</html>
+

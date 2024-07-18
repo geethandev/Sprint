@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Small Basket</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+        nav h1 {
+            padding-left: 20px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0 , 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        form a {
+            color: white;
+            font-size: 15px;
+            text-decoration: none;
+        }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <h1><span style="color: #97BE5A;">Small</span>Basket</h1>
+        </nav>
+        <div class="container">
+            <div id="loginForm">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <label for="loginCustomerId">Customer Id:</label>
+                    <input type="text" id="loginCustomerId" required>
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" required>
+                    <p>Create new account <a href="./register.html" style="color:Blue;">Register</a></p>
+                    <button type="button" onclick="login()">Login</button>
+                </form>
+            </div>
+        </div>
+        <script>
+        function login() {
+            const customerId = document.getElementById('loginCustomerId').value;
+            const password = document.getElementById('loginPassword').value;
+                
+            if (customerId && password) {
+                window.location.href = 'home.html';
+            } else {
+                alert("Please enter both Customer Id and Password.");
+            }
+        }
+
+        function validateForm() {
+            const customerName = document.getElementById('customerName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const address = document.getElementById('address').value;
+            const contactNumber = document.getElementById('contactNumber').value;
+
+            if (!/^[a-zA-Z\s]+$/.test(customerName)) {
+                alert("Customer Name must have alphabets only");
+                return false;
+            }
+            if (!customerName) {
+                alert("Customer Name must not be blank or null");
+                return false;
+            }
+            if (!/@/.test(email)) {
+                alert("Email id not valid");
+                return false;
+            }
+            if (!email) {
+                alert("Email must not be blank or null");
+                return false;
+            }
+            if (password.length < 5 || !/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[!@#$%^&*]/.test(password)) {
+                alert("Password is not matching the criteria");
+                return false;
+            }
+            if (!password) {
+                alert("Password must not be blank or null");
+                return false;
+            }
+            if (!address) {
+                alert("Address must not be blank or null");
+                return false;
+            }
+            if (!/^\d+$/.test(contactNumber)) {
+                alert("Contact number must not have any alphabets");
+                return false;
+            }
+            if (!contactNumber) {
+                alert("Contact Number must not be blank or null");
+                return false;
+            }
+            return true;
+        }
+
+        function registerCustomer() {
+            if (!validateForm()) {
+                return;
+            }
+            const customerName = document.getElementById('customerName').value;
+            const email = document.getElementById('email').value;
+
+            const customerId = 'C' + Math.floor(Math.random() * 1000000);
+
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('acknowledgment').style.display = 'block';
+            document.getElementById('customerId').innerText = customerId;
+            document.getElementById('displayCustomerName').innerText = customerName;
+            document.getElementById('displayEmail').innerText = email;
+
+            console.log("Saving to Registration Table:", { customerId, customerName, email });
+        }
+        </script>
+    </body>
+</html>
+

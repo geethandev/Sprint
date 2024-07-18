@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Basket</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 1em;
+        }
+        nav h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .profile-header {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .profile-details {
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .profile-actions {
+            text-align: center;
+        }
+        .edit-mode input,
+        .edit-mode textarea {
+            border: 1px solid #ccc;
+            padding: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .edit-mode button {
+            margin-top: 10px;
+        }
+        button{
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+        .save-btn{
+            border-radius: 20px;
+            background: #28a745;
+            color: white;
+            font-weight: bold;
+            padding: 5px 15px;
+            margin-top: 10px;
+        }
+        .save-btn:hover{
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1><span style="color: #97BE5A;">Small</span>Basket</h1>
+        <ul>
+            <li><a href="./home.HTML">Home</a></li>
+            <li><a href="./myprofile.html">My Profile</a></li>
+            <li><a href="./cart.html">Cart</a></li>
+            <li><a href="./login.html">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="profile-header">
+            <h2>Welcome, <span id="customerName"></span>!</h2>
+        </div>
+        <div class="profile-details" id="profileDetails">
+
+        </div>
+        <div class="profile-actions">
+            <button class="save-btn" id="editButton" onclick="toggleEditMode()">Update</button>
+            <button class="save-btn" id="saveButton" style="display: none;" onclick="saveChanges()">Save</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const customerData = {
+                customerName: "Aswin Sekar",
+                email: "aswin@gmail.com",
+                password: "********",
+                address: "Mumbai",
+                contactNumber: "8300640201"
+            };
+            const customerNameElement = document.getElementById('customerName');
+            if (customerNameElement) {
+                customerNameElement.textContent = customerData.customerName;
+            }
+
+            const profileDetailsElement = document.getElementById('profileDetails');
+            if (profileDetailsElement) {
+                profileDetailsElement.innerHTML = `
+                    <h3>Profile Details</h3>
+                    <p><strong>Email:</strong> ${customerData.email}</p>
+                    <p><strong>Password:</strong> ********</p>
+                    <p><strong>Address:</strong> ${customerData.address}</p>
+                    <p><strong>Contact Number:</strong> ${customerData.contactNumber}</p>
+                `;
+            }
+        });
+        function toggleEditMode() {
+            const profileDetailsElement = document.getElementById('profileDetails');
+            if (profileDetailsElement) {
+                const inputs = profileDetailsElement.querySelectorAll('p');
+                inputs.forEach(input => {
+                    const value = input.textContent.split(': ')[1];
+                    const inputElement = document.createElement('input');
+                    inputElement.setAttribute('type', 'text');
+                    inputElement.setAttribute('value', value);
+                    inputElement.classList.add('form-control');
+                    input.replaceWith(inputElement);
+                });
+                const editButton = document.getElementById('editButton');
+                const saveButton = document.getElementById('saveButton');
+                editButton.style.display = 'none';
+                saveButton.style.display = 'block';
+            }
+        }
+        function saveChanges() {
+            const profileDetailsElement = document.getElementById('profileDetails');
+            if (profileDetailsElement) {
+                const inputs = profileDetailsElement.querySelectorAll('input');
+                inputs.forEach(input => {
+                    const value = input.value;
+                    const pElement = document.createElement('p');
+                    pElement.textContent = input.previousSibling.textContent.split(': ')[0] + ': ' + value;
+                    input.replaceWith(pElement);
+                });
+                const editButton = document.getElementById('editButton');
+                const saveButton = document.getElementById('saveButton');
+                editButton.style.display = 'block';
+                saveButton.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Basket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 1em;
+        }
+        nav h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .main{
+            background-color: #333;
+            height: max-content;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; 
+        }
+        .a-menu{
+            text-decoration: none;
+            color: white;
+        }
+        .menu-ul li:hover{
+            background: #5b8c5a;
+            transform:scale(1.1)
+        }
+        i{
+            font-size: 40px;
+            margin: 0 10px 0 0;
+        }
+        button{
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+        .container,.deals-container{
+            margin: 50px 50px 50px 5%;
+            width: 90%;
+            text-align: center;
+        }
+        .categories,.items{
+            width: max-content;
+            margin: 25px;
+            display: inline-block;
+            border: 1px solid #333;
+            
+        }
+        .item-image{
+            height: 200px;
+            width: 200px;
+            padding: 10px;
+            border-radius: 20px 20px 20px 20px;
+        }
+        .image-title{
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            color: black;
+        }
+        a{
+            text-decoration: none;
+        }
+        .title{
+            padding: 50px;
+            font-size: 50px;
+            font-weight: bold;
+            letter-spacing: 10px;
+            color: white;
+            background: rgba(0,0, 0, 0.5);
+        }
+        .images{
+            display: inline-block;
+        }
+        .item-image-size{
+            height: 200px;
+            width: 300px;
+            padding: 5px;
+            border-radius: 20px 20px 20px 20px;
+
+        }
+        .description{
+            margin: 20px;
+            min-height: 100px;
+        }
+        .item-select{
+            margin: 10px 0 0 0;
+        }
+        .buynow-btn{
+            border-radius: 20px;
+            background: #28a745;
+            color: white;
+            font-weight: bold;
+            padding: 5px 15px;
+            margin-top: 10px;
+        }
+        .buynow-btn:hover{
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1> <i class="fas fa-shopping-cart" style="color: white;"></i><span style="color: #97BE5A;">Small</span>Basket</h1>
+        <ul>
+            <li><a href="#" class="a-menu">Home</a></li>
+            <li><a href="./cart.html" class="a-menu">Cart</a></li>
+            <li><a href="./myprofile.html" id="profileLink">My Profile</a></li>
+            <li><a href="./login.html" id="logoutLink">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <a href="#vegetables">
+            <div class="categories">
+                <img src="https://cdn.pixabay.com/photo/2016/08/11/08/04/vegetables-1584999_1280.jpg" alt="" class="item-image">
+                <div class="image-title">Vegetables</div>
+            </div>
+        </a>
+        <a href="#fruits">
+            <div class="categories">
+                <img src="https://cdn.stocksnap.io/img-thumbs/960w/bananas-fruits_D0C5D92CD9.jpg" class="item-image">
+                <div class="image-title">Fruits</div>
+            </div>
+        </a>
+        <a href="#meat">
+            <div class="categories">
+                <img src="https://t3.ftcdn.net/jpg/01/18/84/52/360_F_118845283_n9uWnb81tg8cG7Rf9y3McWT1DT1ZKTDx.jpg" alt="" class="item-image">
+                <div class="image-title">Meats & Sea Foods</div>
+            </div>
+        </a>
+    </div>
+
+    <!--Vegetables-->
+    <div class="deals-container" id="vegetables">
+        <div class="main">
+            <div class="title">VEGETABLES</div>
+        </div>
+        <div class="items">
+            <div class="images">
+                <img src="https://cdn.pixabay.com/photo/2011/03/16/16/01/tomatoes-5356_1280.jpg" alt="" class="item-image-size">
+            </div>
+            <div class="description">
+                <b>Tomatoes</b><br>
+                <div class="item-select">
+                    Price : Rs15/500grams
+                </div>
+                <label>Qty:</label>
+                <select name="" id="" class="item-select">
+                    <option value="">250 grams</option>
+                    <option value="">500 grams</option>
+                    <option value="">750 grams</option>
+                    <option value="">1000 grams</option>
+                </select><br>
+                <button class="buynow-btn">Buy Now</button>
+            </div>
+        </div>
+        <div class="items">
+            <div class="images">
+                <img src="https://cdn.pixabay.com/photo/2015/07/17/13/44/cucumbers-849269_1280.jpg" alt="" class="item-image-size">
+            </div>
+            <div class="description">
+                <b>Cucumbers</b><br>
+                <div class="item-select">
+                    Price : Rs20/500grams
+                </div>
+                <label>Qty:</label>
+                <select name="" id="" class="item-select">
+                    <option value="">250 grams</option>
+                    <option value="">500 grams</option>
+                    <option value="">750 grams</option>
+                    <option value="">1000 grams</option>
+                </select><br>
+                <button class="buynow-btn">Buy Now</button>
+            </div>
+        </div>
+        <div class="items">
+            <div class="images">
+                <img src="https://cdn.pixabay.com/photo/2016/02/17/19/14/pea-1205673_1280.jpg" alt="" class="item-image-size">
+            </div>
+            <div class="description">
+                <b>Green Peas</b><br>
+                <div class="item-select">
+                    Price : Rs25/500grams
+                </div>
+                <label>Qty:</label>
+                <select name="" id="" class="item-select">
+                    <option value="">250 grams</option>
+                    <option value="">500 grams</option>
+                    <option value="">750 grams</option>
+                    <option value="">1000 grams</option>
+                </select><br>
+                <button class="buynow-btn">Buy Now</button>
+            </div>
+        </div>
+        <div class="items">
+            <div class="images">
+                <img src="https://cdn.pixabay.com/photo/2014/08/06/20/32/potatoes-411975_1280.jpg" alt="" class="item-image-size">
+            </div>
+            <div class="description">
+                <b>Potatoes</b><br>
+                <div class="item-select">
+                    Price : Rs10/500grams
+                </div>
+                <label>Qty:</label>
+                <select name="" id="" class="item-select">
+                    <option value="">250 grams</option>
+                    <option value="">500 grams</option>
+                    <option value="">750 grams</option>
+                    <option value="">1000 grams</option>
+                </select><br>
+                <button class="buynow-btn">Buy Now</button>
+            </div>
+        </div>
+        <div class="items">
+            <div class="images">
+                <img src="https://cdn.pixabay.com/photo/2016/07/11/00/18/carrots-1508847_1280.jpg" alt="" class="item-image-size">
+            </div>
+            <div class="description">
+                <b>Carrots</b><br>
+                <div class="item-select">
+                    Price : Rs30/500grams
+                </div>
+                <label>Qty:</label>
+                <select name="" id="" class="item-select">
+                    <option value="">250 grams</option>
+                    <option value="">500 grams</option>
+                    <option value="">750 grams</option>
+                    <option value="">1000 grams</option>
+                </select><br>
+                <button class="buynow-btn">Buy Now</button>
+            </div>
+        </div>
+        <div class="items">
+            <div class="images">
+                <img src="https://cdn.pixabay.com/photo/2015/11/02/16/07/green-beans-1018624_1280.jpg" alt="" class="item-image-size">
+            </div>
+            <div class="description">
+                <b>Green Beans</b><br>
+                <div class="item-select">
+                    Price : Rs20/500grams
+                </div>
+                <label>Qty:</label>
+                <select name="" id="" class="item-select">
+                    <option value="">250 grams</option>
+                    <option value="">500 grams</option>
+                    <option value="">750 grams</option>
+                    <option value="">1000 grams</option>
+                </select><br>
+                <button class="buynow-btn">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+<!-- Fruits -->
+<div class="deals-container" id="fruits">
+<div class="main">
+    <div class="title">FRUITS</div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://www.foodiesfeed.com/wp-content/uploads/2019/07/pile-of-pineapples.jpg" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Pineapples</b><br>
+        <div class="item-select">
+            Price : Rs25/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://cdn.pixabay.com/photo/2013/04/02/21/47/strawberries-99551_1280.jpg" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Strawberries</b><br>
+        <div class="item-select">
+            Price : Rs35/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://cdn.pixabay.com/photo/2018/12/07/01/53/apple-3860991_1280.jpg" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Apples</b><br>
+        <div class="item-select">
+            Price : Rs45/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://cdn.pixabay.com/photo/2014/08/01/08/31/oranges-407429_1280.jpg" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Oranges</b><br>
+        <div class="item-select">
+            Price : Rs40/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://cdn.pixabay.com/photo/2016/01/03/17/59/bananas-1119790_1280.jpg" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Bananas</b><br>
+        <div class="item-select">
+            Price : Rs20/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://cdn.pixabay.com/photo/2023/09/29/07/58/mango-8283268_1280.jpg" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Mangoes</b><br>
+        <div class="item-select">
+            Price : Rs60/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+</div>
+
+<!--  Meat & Sea Foods -->
+<div class="deals-container" id="meat">
+<div class="main">
+    <div class="title">MEATS & SEA FOODS</div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://cdn.pixabay.com/photo/2010/12/10/08/chicken-1140_1280.jpg" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Chicken</b><br>
+        <div class="item-select">
+            Price : Rs120/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWJnVqqUPu3ybkfePey0Y8v4rUoSMEb6_1Tg&s" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Mutton</b><br>
+        <div class="item-select">
+            Price : Rs350/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeojiIgtHiMFYEzNUSIlUrDkNppPlL2wTlScxyIuZ-T6vp8y25Q_lcnKhO3A&s" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Beef Steak</b><br>
+        <div class="item-select">
+            Price : Rs150/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://cdn.pixabay.com/photo/2015/09/09/20/36/fish-933187_1280.jpg" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Fish</b><br>
+        <div class="item-select">
+            Price : Rs80/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://cdn.pixabay.com/photo/2016/07/17/03/02/shrimp-1523135__340.jpg" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Prawn</b><br>
+        <div class="item-select">
+            Price : Rs200/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+<div class="items">
+    <div class="images">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBMQTHvUQVuKPHcNUOyFQVpprBGVpJCBQoAA&s" alt="" class="item-image-size">
+    </div>
+    <div class="description">
+        <b>Crab</b><br>
+        <div class="item-select">
+            Price : Rs150/500grams
+        </div>
+        <label>Qty:</label>
+        <select name="" id="" class="item-select">
+            <option value="">250 grams</option>
+            <option value="">500 grams</option>
+            <option value="">750 grams</option>
+            <option value="">1000 grams</option>
+        </select><br>
+        <button class="buynow-btn">Buy Now</button>
+    </div>
+</div>
+</div>
+</body>
+</html>
